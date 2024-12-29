@@ -5,10 +5,6 @@ inputs:
    description: 'Do you wish to cache the dependencies?'
    required: false
    default: 'true'
-  outputs:
-    used-cache:
-      description: 'Was the cache used (outputs)?'
-      value: ${{ steps.install.outputs.cache }}
 runs:
   using: 'composite'
   steps:
@@ -21,11 +17,9 @@ runs:
         path: node_modules
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
-      id: install
       # Run npm install if the cache was not hit or if the user does not want to cache
       if: steps.cache.outputs.cache-hit != 'true' || inputs.caching != 'true'
       run: |
         npm ci
         echo "Was cache used: ${{ inputs.caching }}"
-        echo "cache='${{ inputs.caching }}'" >> $GIHUB_OUTPUT
       shell: bash
