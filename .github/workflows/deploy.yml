@@ -82,7 +82,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         with:
           bucket: gha-s3-custom-action
-          bucket-region: 
+          # Default region is set to us-east-1
+          # bucket-region: us-east-1
           dist-folder: ./dist
   information:
     runs-on: ubuntu-latest
