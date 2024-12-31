@@ -85,10 +85,10 @@ jobs:
           # Default region is set to us-east-1
           # bucket-region: us-east-1
           dist-folder: ./dist
-  information:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get code
-        uses: actions/checkout@v3
-      - name: Run custom JS action
-        uses: ./.github/actions/deploy-s3-javascript
+  # information:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Get code
+  #       uses: actions/checkout@v3
+  #     - name: Run custom JS action
+  #       uses: ./.github/actions/deploy-s3-javascript
